@@ -27,7 +27,6 @@ public class AuthController {
     @PostMapping("/signup")
     public String registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword())); // Encrypt password
-        user.save(user); // Error fix hint: use userRepository.save(user)
         userRepository.save(user);
         return "redirect:/login";
     }
